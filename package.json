@@ -1,0 +1,114 @@
+{
+  "name": "glade-launcher",
+  "version": "1.0.0",
+  "description": "Glade Minecraft Launcher with Online Auth, Admin Console, and Desktop Client",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js",
+    "app": "electron .",
+    "build": "node scripts/build.js",
+    "build:app": "electron-builder",
+    "build:dir": "electron-builder --dir",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win --x64",
+    "build:linux": "electron-builder --linux"
+  },
+  "keywords": [
+    "minecraft",
+    "launcher",
+    "glade",
+    "auth",
+    "electron"
+  ],
+  "author": "Glade Team",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "^2.5.0",
+    "nodemailer": "^6.9.16",
+    "skinview3d": "^3.4.2"
+  },
+  "devDependencies": {
+    "electron": "^45.1.0",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "com.glade.launcher",
+    "productName": "Glade Launcher",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "mods.html",
+      "friends.html",
+      "settings.html",
+      "profile.html",
+      "appearance.html",
+      "auth.html",
+      "admin.html",
+      "support.html",
+      "css/**/*",
+      "js/**/*",
+      "server/**/*",
+      "data/**/*",
+      "uploads/**/*",
+      "assets/**/*",
+      "electron/**/*",
+      "build/**/*",
+      ".env",
+      "*.png",
+      "*.ico",
+      "*.icns",
+      "*.svg",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.games",
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "dmg": {
+      "title": "${productName} ${version}",
+      "icon": "build/icon.icns",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "window": {
+        "width": 540,
+        "height": 380
+      }
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "favicon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "app-icon.png",
+      "category": "Game"
+    }
+  }
+}

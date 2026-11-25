@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glade — Авторизация</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/titlebar.css">
+</head>
+<body>
+
+<!-- Background decoration -->
+<div class="bg-glow"></div>
+
+<!-- Симулятор входящего письма с кодом подтверждения -->
+<div class="mail-alert" id="mailAlert">
+  <div class="mail-icon">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+      <polyline points="22,6 12,13 2,6"/>
+    </svg>
+  </div>
+  <div class="mail-content">
+    <div class="mail-title" id="mailTitle">Входящее письмо</div>
+    <div class="mail-body" id="mailBody">Ваш код: <b>123456</b></div>
+  </div>
+  <button class="mail-copy-btn" id="mailCopyBtn" title="Вставить код">Вставить</button>
+  <button class="mail-close-btn" id="mailCloseBtn" title="Закрыть">✕</button>
+</div>
+
+<div class="auth-card">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="assets/glade-logo.png" alt="Glade" class="logo-img">
+    <b>GLADE</b>
+  </div>
+
+  <p class="subtitle" id="authSubtitle">Вход и безопасность аккаунта</p>
+
+  <!-- Tabs (скрываются в режиме восстановления пароля) -->
+  <div class="tabs" id="authTabs">
+    <button class="tab on" data-tab="login">Вход</button>
+    <button class="tab" data-tab="register">Регистрация</button>
+  </div>
+
+  <!-- ================= ФОРМА ВХОДА ================= -->
+  <div id="loginSection" class="auth-section">
+    <!-- Шаг 1: Логин/Email + Пароль -->
+    <form id="loginForm" class="auth-form" autocomplete="off">
+      <div class="field">
+        <label for="loginIdentifier">Имя пользователя или Email</label>
+        <input type="text" id="loginIdentifier" placeholder="username или user@mail.com" required>
+      </div>
+      <div class="field">
+        <div class="label-row">
+          <label for="loginPass">Пароль</label>
+          <a href="#" id="toForgotLink" class="text-link">Забыли пароль?</a>
+        </div>
+        <input type="password" id="loginPass" placeholder="••••••••" required>
+      </div>
+      <div class="error-msg" id="loginError"></div>
+      <button type="submit" class="submit-btn" id="loginSubmitBtn">Продолжить</button>
+    </form>
+
+    <!-- Шаг 2: Ввод кода подтверждения с почты -->
+    <form id="loginCodeForm" class="auth-form hidden" autocomplete="off">
+      <div class="step-info">
+        <p>На вашу почту <span class="highlight" id="loginTargetEmail"></span> отправлен 6-значный код для входа.</p>
+      </div>
+      <div class="field">
+        <label for="loginCode">Код подтверждения из письма</label>
+        <input type="text" id="loginCode" maxlength="6" inputmode="numeric" placeholder="123456" class="code-input" required>
+      </div>
+      <div class="error-msg" id="loginCodeError"></div>
+      <button type="submit" class="submit-btn">Подтвердить и войти</button>
+      <div class="form-actions">
+        <button type="button" class="link-btn" id="resendLoginCodeBtn">Отправить код снова</button>
+        <span class="sep">•</span>
+        <button type="button" class="link-btn" id="backToLoginStep1Btn">Назад</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ================= ФОРМА РЕГИСТРАЦИИ ================= -->
+  <div id="registerSection" class="auth-section hidden">
+    <form id="registerForm" class="auth-form" autocomplete="off">
+      <div class="field">
+        <label for="regUser">Имя пользователя</label>
+        <input type="text" id="regUser" placeholder="username (3–16 символов)" required>
+      </div>
+      <div class="field">
+        <label for="regEmail">Электронная почта <span class="req">*</span></label>
+        <input type="email" id="regEmail" placeholder="your@email.com" required>
+        <small class="hint">Нужна для подтверждения входа и сброса пароля</small>
+      </div>
+      <div class="field">
+        <label for="regPass">Пароль</label>
+        <input type="password" id="regPass" placeholder="•••••••• (от 4 символов)" required>
+      </div>
+      <div class="field">
+        <label for="regPassConfirm">Подтвердите пароль</label>
+        <input type="password" id="regPassConfirm" placeholder="••••••••" required>
+      </div>
+      <div class="error-msg" id="regError"></div>
+      <button type="submit" class="submit-btn">Зарегистрироваться</button>
+    </form>
+  </div>
+
+  <!-- ================= ВОССТАНОВЛЕНИЕ ПАРОЛЯ ================= -->
+  <div id="forgotSection" class="auth-section hidden">
+    <!-- Шаг 1: Запрос кода на почту -->
+    <form id="forgotEmailForm" class="auth-form" autocomplete="off">
+      <div class="step-info">
+        <p>Укажите почту, привязанную к вашему аккаунту, для сброса пароля.</p>
+      </div>
+      <div class="field">
+        <label for="forgotEmail">Электронная почта</label>
+        <input type="email" id="forgotEmail" placeholder="your@email.com" required>
+      </div>
+      <div class="error-msg" id="forgotEmailError"></div>
+      <button type="submit" class="submit-btn">Получить код сброса</button>
+      <div class="form-actions">
+        <button type="button" class="link-btn" id="backToLoginFromForgotBtn">Вернуться ко входу</button>
+      </div>
+    </form>
+
+    <!-- Шаг 2: Ввод кода и нового пароля -->
+    <form id="forgotResetForm" class="auth-form hidden" autocomplete="off">
+      <div class="step-info">
+        <p>Код сброса отправлен на <span class="highlight" id="forgotTargetEmail"></span>.</p>
+      </div>
+      <div class="field">
+        <label for="forgotCode">Код из письма</label>
+        <input type="text" id="forgotCode" maxlength="6" inputmode="numeric" placeholder="123456" class="code-input" required>
+      </div>
+      <div class="field">
+        <label for="forgotNewPass">Новый пароль</label>
+        <input type="password" id="forgotNewPass" placeholder="••••••••" required>
+      </div>
+      <div class="field">
+        <label for="forgotNewPassConfirm">Подтвердите новый пароль</label>
+        <input type="password" id="forgotNewPassConfirm" placeholder="••••••••" required>
+      </div>
+      <div class="error-msg" id="forgotResetError"></div>
+      <button type="submit" class="submit-btn">Сохранить пароль и войти</button>
+      <div class="form-actions">
+        <button type="button" class="link-btn" id="resendForgotCodeBtn">Отправить код снова</button>
+        <span class="sep">•</span>
+        <button type="button" class="link-btn" id="cancelForgotResetBtn">Отмена</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="footer-line">
+    <span>GLADE LAUNCHER</span>
+    <span class="ver">v2.1.0</span>
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/titlebar.js"></script>
+</body>
+</html>

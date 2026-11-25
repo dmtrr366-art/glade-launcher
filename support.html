@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glade Launcher — Поддержка и Тикеты</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/titlebar.css">
+<script src="js/theme.js"></script>
+<style>
+.support-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 10px;
+}
+@media (max-width: 900px) {
+  .support-container { grid-template-columns: 1fr; }
+}
+.ticket-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.ticket-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dim, #c4b5a5);
+}
+.ticket-form input, .ticket-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(18, 14, 11, 0.7);
+  border: 1px solid var(--border, #3d2715);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ticket-form input:focus, .ticket-form textarea:focus {
+  border-color: var(--o1, #ff8c00);
+}
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.ticket-card {
+  background: rgba(22, 17, 13, 0.85);
+  border: 1px solid var(--border, #3d2715);
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ticket-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 140, 0, 0.15);
+  padding-bottom: 6px;
+}
+.ticket-badge {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.badge-open { background: rgba(255, 172, 40, 0.2); color: #ffac28; border: 1px solid #ffac28; }
+.badge-in_progress { background: rgba(52, 152, 219, 0.2); color: #3498db; border: 1px solid #3498db; }
+.badge-closed { background: rgba(46, 204, 113, 0.2); color: #2ecc71; border: 1px solid #2ecc71; }
+.ticket-reply {
+  background: rgba(30, 24, 18, 0.95);
+  border-left: 3px solid var(--o1, #ff8c00);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+.ticket-empty {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-dim, #888);
+  font-size: 14px;
+}
+.support-notice {
+  font-size: 12px;
+  color: #a89480;
+  background: rgba(255, 140, 0, 0.08);
+  border: 1px dashed rgba(255, 140, 0, 0.3);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+</style>
+</head>
+<body>
+<div class="win" data-v="support" data-page="support">
+
+  <aside class="side">
+    <div class="logo">
+      <img src="assets/glade-logo.png" alt="Glade" class="logo-img">
+      <b>GLADE</b>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Главная</a>
+      <a href="mods.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg>Моды</a>
+      <a href="friends.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Друзья<span class="nav-badge" id="friendsBadge" style="display:none">0</span></a>
+      <a href="appearance.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.49 2 2 6.49 2 12c0 4.41 3.59 8 8 8h1.25c.96 0 1.75-.78 1.75-1.75 0-.46-.18-.88-.47-1.19-.29-.31-.48-.73-.48-1.19 0-.96.79-1.75 1.75-1.75H16c3.31 0 6-2.69 6-6 0-5.51-4.49-10-10-10z"/></svg>Оформление</a>
+      <a href="settings.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M10 2h4l1 3 3-1 2 3-2 2 1 3 3 1v4l-3 1-1 3 2 2-2 3-3-1-1 3h-4l-1-3-3 1-2-3 2-2-1-3-3-1v-4l3-1 1-3-2-2 2-3 3 1z" transform="scale(.82) translate(2.6 2.6)"/><circle cx="12" cy="12" r="3.2"/></svg>Настройки</a>
+      <a href="support.html" class="on"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.5a2.5 2.5 0 115 0c0 1.8-2.5 2-2.5 4M12 17v.5" stroke-linecap="round"/></svg>Поддержка</a>
+    </nav>
+    <svg class="swoosh" viewBox="0 0 260 300" fill="none"><path d="M10 300C10 180 120 130 250 0" stroke="#ff6a00" stroke-width="3" opacity=".8"/><path d="M10 300C10 200 110 160 250 40V300z" fill="url(#g)" opacity=".18"/><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#ff6a00"/><stop offset="1" stop-color="#ff6a00" stop-opacity="0"/></linearGradient></defs></svg>
+    <div class="user">
+      <div class="av"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.5-7 8-7s8 2.500 8 7"/></svg></div>
+      <div class="u-info" onclick="location.href='profile.html'">
+        <span id="uname">Игрок</span>
+        <small><i class="dot on-dot"></i> Онлайн</small>
+      </div>
+      <button id="logoutBtn" class="logout-btn" title="Выйти из аккаунта">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <section class="view" id="v-support">
+    <header class="vhead">
+      <div>
+        <h2>Служба поддержки Glade</h2>
+        <p>Подача тикетов и жалоб на нарушения правил</p>
+      </div>
+    </header>
+
+    <div class="support-container">
+      
+      <!-- Колонка 1: Форма подачи тикета -->
+      <div class="card">
+        <h3>Новое обращение</h3>
+        <hr class="ul">
+        
+        <form id="ticketForm" class="ticket-form" onsubmit="return false;">
+          <label>
+            Ваше имя
+            <input type="text" id="ticketUsername" placeholder="Ваш никнейм" required>
+          </label>
+
+          <label>
+            Суть проблемы - нарушения
+            <textarea id="ticketSubject" rows="4" placeholder="Опишите суть проблемы или нарушение правил игроком (ник нарушителя, пункт правил, обстоятельства)..." required></textarea>
+          </label>
+
+          <label>
+            Доказательства (скрины, видосы)
+            <textarea id="ticketProofs" rows="3" placeholder="Ссылки на видео (YouTube / Twitch / диск), скриншоты (Imgur / Postimages) или детальное описание..." required></textarea>
+          </label>
+
+          <button class="pbtn" id="submitTicketBtn" style="margin-top:6px;">Отправить тикет</button>
+
+          <div class="support-notice">
+            Тикеты рассматриваются администрацией проекта. После закрытия обращение будет автоматически удалено из системы спустя 24 часа.
+          </div>
+        </form>
+      </div>
+
+      <!-- Колонка 2: Мои обращения -->
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <h3>Мои обращения</h3>
+          <button class="ghost" id="refreshTicketsBtn" style="padding:4px 10px;font-size:12px;">Обновить</button>
+        </div>
+        <hr class="ul">
+
+        <div class="ticket-list" id="myTicketList">
+          <div class="ticket-empty">Загрузка ваших обращений...</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="foot"><span>GLADE LAUNCHER Version 1.0</span><span>BATTLE ROYALE / MINECRAFT</span></footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/auth.js"></script>
+<script src="js/titlebar.js"></script>
+<script src="js/support.js"></script>
+</body>
+</html>

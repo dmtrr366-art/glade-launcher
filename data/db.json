@@ -1,0 +1,25 @@
+{
+  "users": [],
+  "sessions": {},
+  "verificationCodes": {},
+  "mods": [
+    {
+      "id": "glade-staff",
+      "name": "Glade Staff (Модерация)",
+      "description": "Официальный модуль модерации и выдачи наказаний CMI. Доступен только персоналу Glade с аппаратной привязкой HWID.",
+      "version": "1.0",
+      "size": "1,8 МБ",
+      "category": "staff",
+      "staffOnly": true,
+      "required": false,
+      "downloads": 14,
+      "filename": "glade-core.jar",
+      "createdAt": "2026-11-03T23:36:08.218Z"
+    }
+  ],
+  "friendships": [],
+  "messages": [],
+  "punishLogs": [],
+  "tickets": [],
+  "navigatorModes": []
+}

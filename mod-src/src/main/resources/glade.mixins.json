@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.glade.mod.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "TitleScreenMixin",
+    "MinecraftClientMixin",
+    "PlayerListEntryMixin",
+    "AbstractClientPlayerEntityMixin",
+    "ConnectScreenMixin",
+    "ReceivingLevelScreenMixin",
+    "ScreenMixin",
+    "PressableWidgetMixin",
+    "SliderWidgetMixin",
+    "KeyboardMixin",
+    "GameMenuScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

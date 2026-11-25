@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glade Launcher — Профиль</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/titlebar.css">
+<script src="js/theme.js"></script>
+<!-- 3D Minecraft Skin Viewer Library -->
+<script src="js/libs/skinview3d.bundle.js"></script>
+</head>
+<body>
+<div class="win" data-v="profile" data-page="profile">
+
+  <aside class="side">
+    <div class="logo">
+      <img src="assets/glade-logo.png" alt="Glade" class="logo-img">
+      <b>GLADE</b>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Главная</a>
+      <a href="mods.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg>Моды</a>
+      <a href="friends.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Друзья<span class="nav-badge" id="friendsBadge" style="display:none">0</span></a>
+      <a href="appearance.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.49 2 2 6.49 2 12c0 4.41 3.59 8 8 8h1.25c.96 0 1.75-.78 1.75-1.75 0-.46-.18-.88-.47-1.19-.29-.31-.48-.73-.48-1.19 0-.96.79-1.75 1.75-1.75H16c3.31 0 6-2.69 6-6 0-5.51-4.49-10-10-10z"/></svg>Оформление</a>
+      <a href="settings.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M10 2h4l1 3 3-1 2 3-2 2 1 3 3 1v4l-3 1-1 3 2 2-2 3-3-1-1 3h-4l-1-3-3 1-2-3 2-2-1-3-3-1v-4l3-1 1-3-2-2 2-3 3 1z" transform="scale(.82) translate(2.6 2.6)"/><circle cx="12" cy="12" r="3.2"/></svg>Настройки</a>
+    </nav>
+    <svg class="swoosh" viewBox="0 0 260 300" fill="none"><path d="M10 300C10 180 120 130 250 0" stroke="#ff6a00" stroke-width="3" opacity=".8"/><path d="M10 300C10 200 110 160 250 40V300z" fill="url(#g)" opacity=".18"/><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#ff6a00"/><stop offset="1" stop-color="#ff6a00" stop-opacity="0"/></linearGradient></defs></svg>
+    <div class="user">
+      <div class="av"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.5-7 8-7s8 2.500 8 7"/></svg></div>
+      <div class="u-info" onclick="location.href='profile.html'">
+        <span id="uname">Игрок</span>
+        <small><i class="dot on-dot"></i> Онлайн</small>
+      </div>
+      <button id="logoutBtn" class="logout-btn" title="Выйти из аккаунта">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <section class="view" id="v-profile">
+    <header class="vhead">
+      <div class="pav" id="pav" onclick="location.href='appearance.html'" style="cursor:pointer;" title="Нажмите, чтобы изменить аватарку"></div>
+      <div>
+        <h2 id="pname">Игрок</h2>
+        <p><i class="dot on-dot"></i> Личный кабинет игрока</p>
+      </div>
+      <button class="ghost" onclick="location.href='appearance.html'" style="margin-left:auto;border-color:var(--o2);color:var(--text);display:flex;align-items:center;gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.49 2 2 6.49 2 12c0 4.41 3.59 8 8 8h1.25c.96 0 1.75-.78 1.75-1.75 0-.46-.18-.88-.47-1.19-.29-.31-.48-.73-.48-1.19 0-.96.79-1.75 1.75-1.75H16c3.31 0 6-2.69 6-6 0-5.51-4.49-10-10-10z"/></svg>
+        Оформление
+      </button>
+    </header>
+
+    <div class="pgrid">
+      <!-- Карточка аккаунта -->
+      <div class="card">
+        <h3>Учётная запись</h3>
+        <hr class="ul">
+        <div class="seg" id="seg">
+          <button class="on">Локальный</button>
+          <button id="msbtn">Microsoft</button>
+        </div>
+
+        <label class="lab" style="margin-top: 14px;">Игровой никнейм</label>
+        <div class="locked-nick-badge">
+          <span class="nick-value" id="pnick">Игрок</span>
+          <span class="locked-tag" title="Никнейм указан при регистрации и не подлежит изменению">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Фиксирован
+          </span>
+        </div>
+        <small class="note">Указан при регистрации (изменению не подлежит)</small>
+        
+        <label class="lab" style="margin-top: 16px;">Привязанная почта</label>
+        <div class="profile-meta-val" id="pemail">—</div>
+        <small class="note">Используется для подтверждения входа и восстановления пароля</small>
+
+        <label class="lab" style="margin-top: 16px;">Привилегия / Статус</label>
+        <div><span class="role-badge" id="prole">Игрок</span></div>
+
+        <label class="lab" style="margin-top: 16px;">Дата регистрации</label>
+        <div class="profile-meta-val" id="pcreated">—</div>
+      </div>
+
+      <!-- Карточка 3D скина и плаща -->
+      <div class="card">
+        <div class="skin-card-header">
+          <h3>3D Скин и Плащ</h3>
+          <span class="skin-badge-online">Интерактивный просмотр</span>
+        </div>
+        <hr class="ul">
+
+        <div class="skin-viewer-container">
+          <!-- 3D Canvas Box -->
+          <div class="skin-canvas-box">
+            <canvas id="skin-canvas" width="280" height="390"></canvas>
+            <div class="skin-canvas-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              Вращайте мышью • Колёсико: зум
+            </div>
+          </div>
+
+          <!-- Панель управления скином -->
+          <div class="skin-controls-col">
+            <!-- Анимация -->
+            <div class="ctrl-group">
+              <label class="ctrl-label">Анимация персонажа</label>
+              <div class="anim-btn-group" id="animGroup">
+                <button class="anim-btn" data-anim="idle">Покой</button>
+                <button class="anim-btn on" data-anim="walk">Ходьба</button>
+                <button class="anim-btn" data-anim="run">Бег</button>
+                <button class="anim-btn" data-anim="wave">Привет</button>
+                <button class="anim-btn icon-btn" id="pauseAnimBtn" title="Пауза / Запуск анимации">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Тип модели -->
+            <div class="ctrl-group">
+              <label class="ctrl-label">Модель рук</label>
+              <div class="model-toggle" id="modelToggle">
+                <button class="m-btn on" data-model="default">Steve (Классика 4px)</button>
+                <button class="m-btn" data-model="slim">Alex (Тонкие 3px)</button>
+              </div>
+            </div>
+
+            <!-- Авто-вращение -->
+            <div class="ctrl-group">
+              <label class="ctrl-label">Камера</label>
+              <button class="toggle-btn on" id="autoRotateBtn" type="button">
+                <span class="toggle-dot"></span>
+                <span>Авто-вращение персонажа</span>
+              </button>
+            </div>
+
+            <!-- Загрузка файлов -->
+            <div class="ctrl-group actions-group">
+              <input type="file" id="skinFileInput" accept="image/png" style="display:none">
+              <input type="file" id="capeFileInput" accept="image/png" style="display:none">
+
+              <button class="pbtn" id="uploadSkinBtn" type="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Загрузить скин (.png)
+              </button>
+
+              <button class="ghost" id="uploadCapeBtn" type="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Загрузить плащ (.png)
+              </button>
+
+              <div class="skin-sub-actions">
+                <button class="link-btn" id="resetSkinBtn" type="button">Сбросить скин</button>
+                <span class="sep">•</span>
+                <button class="link-btn" id="resetCapeBtn" type="button">Снять плащ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot"><span>GLADE LAUNCHER Version 1.0</span><span>BATTLE ROYALE / MINECRAFT</span></footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/auth.js"></script>
+<script src="js/titlebar.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

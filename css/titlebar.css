@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Glade Launcher — Universal Titlebar Styles
+   ========================================================================== */
+
+.app-titlebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  background: #080605;
+  border-bottom: 1px solid #1f1610;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  z-index: 9999999;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+/* Отступ слева под нативные кнопки macOS (traffic lights) */
+html.is-mac .app-titlebar {
+  padding-left: 76px;
+}
+
+/* На macOS используются нативные кнопки управления окном слева, скрываем дубли справа */
+html.is-mac .titlebar-controls {
+  display: none !important;
+}
+
+.titlebar-drag-region {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titlebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff6a00;
+  font-size: 12px;
+  font-family: var(--display, "Russo One", sans-serif);
+  letter-spacing: 0.12em;
+}
+
+.titlebar-brand img,
+.titlebar-brand svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.titlebar-brand span {
+  background: linear-gradient(180deg, #ff8a1f, #d84300);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.titlebar-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  -webkit-app-region: no-drag;
+}
+
+.titlebar-btn {
+  all: unset;
+  cursor: pointer;
+  width: 32px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  color: #8d817a;
+  transition: background 0.15s, color 0.15s;
+}
+
+.titlebar-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.titlebar-btn.btn-close:hover {
+  background: #e81123 !important;
+  color: #fff !important;
+}
+
+.titlebar-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 1.8;
+}
+
+/* Сдвиг контента страниц ровно на высоту шапки окна без лишних отступов */
+body {
+  padding-top: 38px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Отключаем перетаскивание на всем интерактивном контенте, чтобы клики работали на 100% */
+.win, .main, .side, .hero, .right, .modes, .mode, .card, .vhead, .view, .auth-box, .admin-container, form, input, button, select, textarea, a {
+  -webkit-app-region: no-drag !important;
+}

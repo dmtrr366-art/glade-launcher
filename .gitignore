@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Build outputs & packaging
+dist/
+build/
+out/
+
+# Logs
+logs/*.log
+*.log
+npm-debug.log*
+
+# User uploads & cache
+uploads/avatars/*
+!uploads/avatars/.gitkeep
+uploads/banners/*
+!uploads/banners/.gitkeep
+uploads/tickets/*
+!uploads/tickets/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db

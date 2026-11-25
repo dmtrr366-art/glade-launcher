@@ -1,0 +1,248 @@
+/* ==========================================================================
+   Glade Launcher — Appearance & Customization Styles
+   ========================================================================== */
+
+.app-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.app-card {
+  background: var(--panel2, #120f0d);
+  border: 1px solid var(--line, #2a1f18);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: border-color 0.2s ease;
+}
+
+.app-card:hover {
+  border-color: rgba(255, 106, 0, 0.4);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line, #2a1f18);
+  padding-bottom: 14px;
+}
+
+.app-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text, #ece6e1);
+}
+
+.app-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted, #8d817a);
+}
+
+/* Сетка палитры цветов */
+.color-presets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.color-item {
+  background: #0a0807;
+  border: 1px solid var(--line, #2a1f18);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.18s ease;
+}
+
+.color-item:hover {
+  border-color: var(--o2, #e04a00);
+  transform: translateY(-2px);
+  background: #14100d;
+}
+
+.color-item.active {
+  border-color: var(--o1, #ff6a00);
+  background: rgba(255, 106, 0, 0.12);
+  box-shadow: 0 0 16px var(--glow, rgba(255, 106, 0, 0.25));
+}
+
+.color-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 8px currentColor;
+}
+
+.color-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text, #ece6e1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Кастомный цвет */
+.custom-color-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #080605;
+  border: 1px solid var(--line, #2a1f18);
+  border-radius: 12px;
+  flex-wrap: wrap;
+}
+
+.custom-color-picker {
+  -webkit-appearance: none;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: none;
+}
+
+.custom-color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.custom-color-picker::-webkit-color-swatch {
+  border: 2px solid var(--line, #2a1f18);
+  border-radius: 8px;
+}
+
+/* Сетки градиентов главного фона и баннеров (4 чистые карточки без названий) */
+.hero-presets-grid,
+.banner-presets-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 800px) {
+  .hero-presets-grid,
+  .banner-presets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.preset-thumb-card {
+  position: relative;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--line, #2a1f18);
+  cursor: pointer;
+  background-size: cover !important;
+  background-position: center !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.preset-thumb-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--o2, #e04a00);
+}
+
+.preset-thumb-card.active {
+  border-color: var(--o1, #ff6a00);
+  box-shadow: 0 0 20px var(--glow, rgba(255, 106, 0, 0.35));
+}
+
+/* Интерактивное превью главного экрана Играть (в точности как на скриншоте) */
+.live-hero-preview {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 180px;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid var(--line, #2a1f18);
+  background-size: cover !important;
+  background-position: center !important;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
+  transition: background 0.25s ease;
+}
+
+/* Интерактивное превью баннера профиля */
+.live-banner-preview {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 120px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid var(--line, #2a1f18);
+  background-size: cover !important;
+  background-position: center !important;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
+  transition: background 0.25s ease;
+}
+
+.live-preview-tag {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 10.5px;
+  letter-spacing: 0.15em;
+  color: var(--o3, #ff8a1f);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--o2, #e04a00);
+}
+
+/* Строка загрузки файлов и ввода URL */
+.upload-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  background: #080605;
+  border: 1px solid var(--line, #2a1f18);
+  border-radius: 12px;
+}
+
+.upload-btn-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 106, 0, 0.12);
+  border: 1px solid var(--o2, #e04a00);
+  color: var(--text, #ece6e1);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.upload-btn-label:hover {
+  background: rgba(255, 106, 0, 0.24);
+  border-color: var(--o1, #ff6a00);
+}

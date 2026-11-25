@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glade Launcher — Оформление</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/titlebar.css">
+<link rel="stylesheet" href="css/appearance.css">
+<script src="js/theme.js"></script>
+</head>
+<body>
+<div class="win" data-v="appearance" data-page="appearance">
+
+  <!-- Боковое меню -->
+  <aside class="side">
+    <div class="logo">
+      <img src="assets/glade-logo.png" alt="Glade" class="logo-img">
+      <b>GLADE</b>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Главная</a>
+      <a href="mods.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10"/></svg>Моды</a>
+      <a href="friends.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Друзья<span class="nav-badge" id="friendsBadge" style="display:none">0</span></a>
+      <a href="appearance.html" class="on">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+          <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+          <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+          <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+          <path d="M12 2C6.49 2 2 6.49 2 12c0 4.41 3.59 8 8 8h1.25c.96 0 1.75-.78 1.75-1.75 0-.46-.18-.88-.47-1.19-.29-.31-.48-.73-.48-1.19 0-.96.79-1.75 1.75-1.75H16c3.31 0 6-2.69 6-6 0-5.51-4.49-10-10-10z"/>
+        </svg>Оформление
+      </a>
+      <a href="settings.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M10 2h4l1 3 3-1 2 3-2 2 1 3 3 1v4l-3 1-1 3 2 2-2 3-3-1-1 3h-4l-1-3-3 1-2-3 2-2-1-3-3-1v-4l3-1 1-3-2-2 2-3 3 1z" transform="scale(.82) translate(2.6 2.6)"/><circle cx="12" cy="12" r="3.2"/></svg>Настройки</a>
+    </nav>
+    <svg class="swoosh" viewBox="0 0 260 300" fill="none"><path d="M10 300C10 180 120 130 250 0" stroke="#ff6a00" stroke-width="3" opacity=".8"/><path d="M10 300C10 200 110 160 250 40V300z" fill="url(#g)" opacity=".18"/><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#ff6a00"/><stop offset="1" stop-color="#ff6a00" stop-opacity="0"/></linearGradient></defs></svg>
+    <div class="user">
+      <div class="av"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.5-7 8-7s8 2.500 8 7"/></svg></div>
+      <div class="u-info" onclick="location.href='profile.html'">
+        <span id="uname">Игрок</span>
+        <small><i class="dot on-dot"></i> Онлайн</small>
+      </div>
+      <button id="logoutBtn" class="logout-btn" title="Выйти из аккаунта">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Основной контент страницы оформления -->
+  <section class="view" id="v-appearance" style="display:flex; flex-direction:column; gap:16px;">
+    <header class="vhead">
+      <div>
+        <h2>Оформление</h2>
+        <p>Персонализация цветовой гаммы, главного фона экрана Играть, баннера профиля и аватарок</p>
+      </div>
+    </header>
+
+    <div class="app-grid">
+      
+      <!-- СЕКЦИЯ 1: ЦВЕТОВАЯ ГАММА -->
+      <div class="app-card">
+        <div class="app-header">
+          <div>
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              Цветовая гамма лаунчера
+            </h3>
+            <p>Меняет акцентные цвета кнопок, свечений, бейджей и шрифтов во всем приложении</p>
+          </div>
+        </div>
+
+        <div class="color-presets-grid" id="colorPresetsGrid">
+          <!-- Генерируется из js/appearance.js -->
+        </div>
+
+        <div class="custom-color-box">
+          <input type="color" id="customColorPicker" class="custom-color-picker" value="#ff6a00" title="Выбрать свой цвет">
+          <input type="text" id="customColorHex" class="inp" style="width: 130px; text-transform: uppercase;" value="#FF6A00" placeholder="#HEX">
+          <button class="ghost" id="applyCustomColorBtn">Применить свой цвет</button>
+          <small style="color: var(--muted); margin-left: auto;">Градиенты и свечения рассчитываются автоматически</small>
+        </div>
+      </div>
+
+      <!-- СЕКЦИЯ 2: ГЛАВНЫЙ ФОН (ГДЕ КНОПКА ИГРАТЬ) -->
+      <div class="app-card">
+        <div class="app-header">
+          <div>
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Главный фон (где кнопка «Играть»)
+            </h3>
+            <p>Отображается на главной странице лаунчера в основном блоке запуска игры</p>
+          </div>
+        </div>
+
+        <!-- Интерактивное живое превью главного экрана -->
+        <div class="live-hero-preview" id="heroLivePreview">
+          <span class="live-preview-tag">ЖИВОЕ ПРЕВЬЮ</span>
+          <p class="kicker" style="margin: 0 0 6px; font-size: 11px; letter-spacing: 0.3em; color: #a8754f;">КОРОЛЕВСКИЕ БИТВЫ В MINECRAFT</p>
+          <h2 style="margin: 0; font-family: var(--display); font-size: 38px; letter-spacing: 0.04em; background: linear-gradient(180deg, var(--o3), var(--o2)); -webkit-background-clip: text; background-clip: text; color: transparent;">GLADE</h2>
+          <div style="margin: 8px 0 18px; font-size: 11.5px; letter-spacing: 0.25em; color: #b96a38;">ВЫЖИВАЙ. ПОБЕЖДАЙ. СТАНЬ ЛЕГЕНДОЙ.</div>
+          <button class="play" style="pointer-events: none; width: 170px; height: 46px; font-size: 15px; border-radius: 30px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px;"><path d="M6 3l15 9-15 9z"/></svg>Играть
+          </button>
+        </div>
+
+        <div class="hero-presets-grid" id="heroPresetsGrid">
+          <!-- 4 градиента главного фона -->
+        </div>
+
+        <div class="upload-row">
+          <label class="upload-btn-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Загрузить свой главный фон
+            <input type="file" id="heroFileInput" accept="image/png,image/jpeg,image/webp" style="display:none">
+          </label>
+          <input type="url" id="heroUrlInput" class="inp" style="flex: 1; min-width: 200px;" placeholder="Или вставьте ссылку на картинку (https://...)">
+          <button class="ghost" id="applyHeroUrlBtn">Применить URL</button>
+          <button class="ghost" id="resetHeroBtn">Сбросить</button>
+        </div>
+      </div>
+
+      <!-- СЕКЦИЯ 3: ФОН БАННЕРА ПРОФИЛЯ -->
+      <div class="app-card">
+        <div class="app-header">
+          <div>
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              Фон баннера профиля
+            </h3>
+            <p>Отображается в шапке личного кабинета игрока</p>
+          </div>
+        </div>
+
+        <!-- Интерактивное живое превью баннера профиля -->
+        <div class="live-banner-preview" id="bannerLivePreview">
+          <span class="live-preview-tag">ЖИВОЕ ПРЕВЬЮ</span>
+          <div class="pav" id="prevPav" style="width: 76px; height: 76px; border-radius: 14px; overflow: hidden; border: 2px solid var(--o2); flex-shrink: 0;"></div>
+          <div>
+            <h2 id="prevUname" style="margin: 0; font-family: var(--display); font-size: 32px; letter-spacing: 0.04em;">Lorsik</h2>
+            <p style="margin: 4px 0 0; color: var(--muted); font-size: 13.5px;"><i class="dot on-dot"></i> Личный кабинет игрока</p>
+          </div>
+        </div>
+
+        <div class="banner-presets-grid" id="bannerPresetsGrid">
+          <!-- 4 градиента баннера профиля -->
+        </div>
+
+        <div class="upload-row">
+          <label class="upload-btn-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Загрузить свой баннер
+            <input type="file" id="bannerFileInput" accept="image/png,image/jpeg,image/webp" style="display:none">
+          </label>
+          <input type="url" id="bannerUrlInput" class="inp" style="flex: 1; min-width: 200px;" placeholder="Или вставьте прямую ссылку на картинку (https://...)">
+          <button class="ghost" id="applyBannerUrlBtn">Применить URL</button>
+          <button class="ghost" id="resetBannerBtn">Сбросить</button>
+        </div>
+      </div>
+
+      <!-- СЕКЦИЯ 4: АВАТАРКА В ПРОФИЛЕ -->
+      <div class="app-card">
+        <div class="app-header">
+          <div>
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.5-7 8-7s8 2.500 8 7"/></svg>
+              Аватарка профиля
+            </h3>
+            <p>Используйте лицо своего игрового скина или загрузите собственное изображение</p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+          <button class="ghost" id="useSkinAvatarBtn" style="border-color: var(--o2); color: var(--text);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:6px;"><rect x="2" y="2" width="20" height="20" rx="3"/></svg>
+            Использовать лицо скина
+          </button>
+          
+          <label class="upload-btn-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Загрузить своё фото / картинку
+            <input type="file" id="avatarFileInput" accept="image/png,image/jpeg,image/webp,image/gif" style="display:none">
+          </label>
+
+          <button class="ghost" id="resetAvatarBtn">Сбросить аватарку</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Кнопки сохранения -->
+    <div style="display: flex; justify-content: flex-end; gap: 14px; margin-top: 10px; margin-bottom: 24px;">
+      <button class="ghost" id="resetAllAppearanceBtn">Сбросить всё по умолчанию</button>
+      <button class="pbtn" id="saveAppearanceBtn" style="min-width: 220px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"/></svg>
+        Сохранить оформление
+      </button>
+    </div>
+  </section>
+
+  <!-- Подвал -->
+  <footer class="foot"><span>GLADE LAUNCHER Version 1.0</span><span>BATTLE ROYALE / MINECRAFT</span></footer>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/auth.js"></script>
+<script src="js/titlebar.js"></script>
+<script src="js/app.js"></script>
+<script src="js/appearance.js"></script>
+</body>
+</html>
